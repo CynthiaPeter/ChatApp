@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "12724714843",
+    "firebase_url": "https://chat-app-5f242.firebaseio.com",
+    "project_id": "chat-app-5f242",
+    "storage_bucket": "chat-app-5f242.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12724714843:android:fbd9b97b7970943612ae7e",
+        "android_client_info": {
+          "package_name": "com.obiagu.chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12724714843-d644ncfb2udn1is8vf5cnd78suuikhg8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcCCi7pyFy5Wciu6fdovG-my2o83DiXbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12724714843-d644ncfb2udn1is8vf5cnd78suuikhg8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
