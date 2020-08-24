@@ -26,19 +26,21 @@ class _SignInState extends State<SignIn> {
       backgroundColor: Color(0xFF0A0E21),
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Flexible(
-                child: Hero(
-                  tag: 'logo',
-                  child: Container(
-                    height: 200.0,
-                    child: LogoStyle(),
-                  ),
+        child: ListView(
+          padding:EdgeInsets.symmetric(horizontal:24),
+            children: <Widget>[ 
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   crossAxisAlignment: CrossAxisAlignment.stretch,
+          //   children: <Widget>[
+          //  ],
+         //  ),
+          SizedBox(height: 70),
+              Hero(
+                tag: 'logo',
+                child: Container(
+                  height: 200.0,
+                  child: LogoStyle(),
                 ),
               ),
               SizedBox(
@@ -96,8 +98,8 @@ class _SignInState extends State<SignIn> {
                   }
                 },
               ),
-            ],
-          ),
+        ]
+                   
         ),
       ),
     );

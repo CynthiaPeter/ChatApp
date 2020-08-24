@@ -1,3 +1,5 @@
+import 'package:chat_app/screens/chatpage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_app/screens/splashscreen.dart';
@@ -42,13 +44,27 @@ class MyApp extends StatelessWidget {
     super.initState();
   }
    loadSplash() async {
-    await Future.delayed(Duration(seconds: 4));
-    Navigator.pushReplacement(
+    await Future.delayed(Duration(seconds: 4), (){
+    if( FirebaseAuth.instance.currentUser == null){
+Navigator.pushReplacement(
       context,
       MaterialPageRoute(
         builder: (context) => WelcomePage(),
       ),
     );
+
+ }else{
+   Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ChatScreen(),
+      ),
+    );
+
+ }
+    });
+    
+ 
   }
 
    Widget build(BuildContext context) {

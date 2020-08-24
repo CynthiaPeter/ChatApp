@@ -1,3 +1,4 @@
+import 'package:chat_app/screens/welcomepage.dart';
 import 'package:flutter/material.dart';
 import '../constant_styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -50,7 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
               onPressed: () {
                 //Implement logout functionality here
                 _auth.signOut();
-                Navigator.pop(context);
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> WelcomePage()), (route) => false);
               }),
         ],
         title: Text('Let\'s chat'),
@@ -74,6 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         messageText = value;
                       },
                       decoration: kMessageTextFieldDecoration,
+                      style: Theme.of(context).textTheme.bodyText1.copyWith(color:Colors.white),
                     ),
                   ),
                   FlatButton(
@@ -83,6 +85,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       _firestore.collection('messages').add({
                         'text': messageText,
                         'sender': loggedInUser.email,
+                        'timestamp':FieldValue.serverTimestamp(),
                       });
                     },
                     child: Text(
@@ -154,9 +157,9 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: _firestore.collection('messages').snapshots(),
+        stream: _firestore.collection('messages').orderBy('timestamp',descending: false).snapshots(),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+          if (!snapshot.hasData) {
             return Center(
               child: CircularProgressIndicator(
                 backgroundColor: Colors.black,
